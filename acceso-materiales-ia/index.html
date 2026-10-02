@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transformación del acceso a materiales educativos con IA</title>
+  <meta name="description" content="Infografía interactiva sobre la transformación del acceso a materiales educativos con IA, pensada para despliegue en GitHub Pages.">
+  <style>
+    :root{
+      --utb-green:#007A53;
+      --utb-green-dark:#005A3D;
+      --utb-green-soft:#EAF7F1;
+      --utb-gold:#F0B323;
+      --utb-ink:#18322B;
+      --utb-gray:#5B6D67;
+      --utb-bg:#F5FAF8;
+      --utb-card:#FFFFFF;
+      --utb-border:#D5E6DE;
+      --utb-blue:#1D6FA5;
+      --utb-blue-soft:#EBF5FB;
+      --shadow:0 12px 32px rgba(0,0,0,.08);
+      --radius:22px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--utb-ink);
+      background:
+        radial-gradient(circle at top left, rgba(0,122,83,.08), transparent 26%),
+        radial-gradient(circle at bottom right, rgba(29,111,165,.08), transparent 24%),
+        linear-gradient(180deg,#F8FCFA 0%,#F1F8F5 100%);
+      line-height:1.55;
+    }
+    img{max-width:100%;display:block}
+    a{color:var(--utb-green-dark)}
+    .wrap{max-width:var(--max);margin:auto;padding:0 20px}
+
+    .topbar{
+      background:linear-gradient(90deg,var(--utb-green-dark),var(--utb-green));
+      color:#fff;
+      font-size:.92rem;
+      border-bottom:4px solid var(--utb-gold);
+    }
+    .topbar .wrap{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 20px;
+      flex-wrap:wrap;
+    }
+    .brand-mini{display:flex;align-items:center;gap:12px;font-weight:700}
+    .brand-badge{
+      width:42px;height:42px;border-radius:12px;background:#fff;color:var(--utb-green-dark);
+      display:grid;place-items:center;font-weight:900;letter-spacing:.04em;box-shadow:0 4px 18px rgba(0,0,0,.12)
+    }
+    .course-chip{
+      padding:8px 12px;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:rgba(255,255,255,.12)
+    }
+
+    .hero{padding:38px 0 22px}
+    .hero-shell{
+      background:linear-gradient(135deg,#0C5E45 0%,#0A7D56 46%,#1D6FA5 100%);
+      color:#fff;border-radius:32px;padding:34px;position:relative;overflow:hidden;box-shadow:var(--shadow)
+    }
+    .hero-shell::before,
+    .hero-shell::after{
+      content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.08)
+    }
+    .hero-shell::before{width:220px;height:220px;right:-50px;top:-40px}
+    .hero-shell::after{width:160px;height:160px;left:-38px;bottom:-50px}
+    .hero-grid{display:grid;grid-template-columns:92px 1fr;gap:24px;align-items:start;position:relative;z-index:1}
+    .hero-icon{
+      width:92px;height:92px;border-radius:24px;background:rgba(255,255,255,.14);backdrop-filter:blur(4px);
+      display:grid;place-items:center;border:1px solid rgba(255,255,255,.25)
+    }
+    .hero h1{margin:0 0 10px;font-size:clamp(2rem,4vw,3.35rem);line-height:1.08}
+    .hero p{margin:0;color:rgba(255,255,255,.93);max-width:860px;font-size:1.05rem}
+    .hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .hero-pill{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);font-weight:600;font-size:.92rem}
+
+    nav.quicknav{
+      position:sticky;top:0;z-index:20;background:rgba(248,252,250,.88);backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(0,0,0,.06)
+    }
+    nav.quicknav .wrap{display:flex;gap:10px;overflow:auto;padding:12px 20px}
+    .quicknav a{
+      text-decoration:none;white-space:nowrap;padding:10px 14px;border-radius:999px;
+      background:#fff;border:1px solid var(--utb-border);font-weight:700;color:var(--utb-green-dark)
+    }
+    .quicknav a:hover{background:var(--utb-green-soft)}
+
+    main{padding:24px 0 54px}
+    .section{margin-top:26px}
+    .cards-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .cards-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .card{
+      background:var(--utb-card);border:1px solid var(--utb-border);border-radius:var(--radius);
+      padding:22px;box-shadow:var(--shadow)
+    }
+    .card h2,.card h3{margin:0 0 10px}
+    .kicker{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border-radius:999px;font-weight:800;font-size:.82rem;letter-spacing:.02em}
+    .kicker.green{background:var(--utb-green-soft);color:var(--utb-green-dark)}
+    .kicker.blue{background:var(--utb-blue-soft);color:var(--utb-blue)}
+    .kicker.gold{background:#FFF7DF;color:#8D6711}
+    .muted{color:var(--utb-gray)}
+    .note{background:#FFF9EA;border-left:6px solid var(--utb-gold);padding:16px 18px;border-radius:16px;margin-top:14px}
+
+    /* FLOW */
+    .flow-card{padding:26px;background:linear-gradient(180deg,#ffffff 0%,#FBFDFC 100%)}
+    .flow-head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap;margin-bottom:16px}
+    .flow-head p{max-width:760px;margin:0;color:var(--utb-gray)}
+    .flow-area{position:relative;padding:8px 0 0}
+    .flow-area::before{
+      content:"";position:absolute;left:50%;top:44px;bottom:44px;width:6px;transform:translateX(-50%);
+      background:linear-gradient(180deg,rgba(0,122,83,.14),rgba(29,111,165,.18),rgba(0,122,83,.14));
+      border-radius:999px;z-index:0;
+    }
+    .flow-step{
+      position:relative;z-index:1;max-width:920px;margin:0 auto 16px;background:#fff;border:2px solid #CFE1DA;
+      border-radius:24px;padding:18px 22px;display:grid;grid-template-columns:68px 1fr;gap:16px;align-items:center;
+      box-shadow:0 10px 24px rgba(0,0,0,.06);transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .flow-step:hover{transform:translateY(-2px);box-shadow:0 16px 28px rgba(0,0,0,.09)}
+    .flow-step:nth-of-type(even){border-color:#CFE3F0}
+    .step-n{
+      width:58px;height:58px;border-radius:18px;display:grid;place-items:center;font-weight:900;font-size:1.2rem;color:#fff;
+      background:linear-gradient(135deg,var(--utb-green) 0%,var(--utb-blue) 100%);
+      box-shadow:0 8px 18px rgba(0,0,0,.14)
+    }
+    .step-content{display:grid;grid-template-columns:54px 1fr;gap:16px;align-items:center}
+    .step-title{margin:0;font-size:1.17rem;line-height:1.25}
+    .step-desc{margin:6px 0 0;color:var(--utb-gray);font-size:.97rem}
+    .icon-round{
+      width:54px;height:54px;border-radius:18px;background:linear-gradient(180deg,#F2FBF7,#ECF5FB);display:grid;place-items:center;
+      border:1px solid #D7E9E1
+    }
+    .flow-arrow{position:relative;z-index:1;width:52px;height:52px;margin:0 auto 14px;display:grid;place-items:center}
+    .flow-arrow::before{
+      content:"";width:52px;height:52px;border-radius:999px;background:#fff;border:3px solid #D4E5DE;
+      position:absolute;box-shadow:0 8px 18px rgba(0,0,0,.08)
+    }
+    .flow-arrow svg{position:relative;z-index:1}
+    .split-wrap{max-width:1040px;margin:0 auto 16px;position:relative;z-index:1;padding-top:18px}
+    .split-node{width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,var(--utb-green),var(--utb-blue));margin:0 auto;box-shadow:0 0 0 8px rgba(0,122,83,.12)}
+    .split-connector{position:relative;height:42px;margin:0 auto 8px;max-width:880px}
+    .split-connector::before{
+      content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:4px;height:18px;background:var(--utb-green);border-radius:999px
+    }
+    .split-connector::after{
+      content:"";position:absolute;left:18%;right:18%;top:18px;height:4px;background:linear-gradient(90deg,var(--utb-green),var(--utb-blue));border-radius:999px
+    }
+    .branches{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .branch-card{
+      position:relative;background:#fff;border-radius:24px;padding:22px;border:2px solid transparent;box-shadow:0 12px 26px rgba(0,0,0,.08)
+    }
+    .branch-card.rural{border-color:#F3D79D;background:linear-gradient(180deg,#FFFDF8,#FFF6E5)}
+    .branch-card.urban{border-color:#C7E0F3;background:linear-gradient(180deg,#F9FCFF,#EEF7FE)}
+    .branch-tag{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;font-weight:900;color:#fff;margin-bottom:14px}
+    .branch-card.rural .branch-tag{background:linear-gradient(135deg,#E89B16,#F0B323)}
+    .branch-card.urban .branch-tag{background:linear-gradient(135deg,#0F6CA4,#2A8CCC)}
+    .branch-row{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
+    .icon-badges{display:flex;gap:10px;flex-wrap:wrap}
+    .mini-badge{
+      width:62px;height:62px;border-radius:18px;background:#fff;display:grid;place-items:center;border:1px solid rgba(0,0,0,.08);box-shadow:0 6px 14px rgba(0,0,0,.08)
+    }
+    .branch-visual{
+      min-height:118px;border-radius:18px;display:flex;align-items:flex-end;justify-content:flex-end;padding:14px;overflow:hidden;
+      background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,.4));
+      border:1px dashed rgba(0,0,0,.12)
+    }
+    .branch-card.rural .branch-visual{background:linear-gradient(180deg,#EBF6E5,#FFF5D8)}
+    .branch-card.urban .branch-visual{background:linear-gradient(180deg,#EAF5FF,#F4FAFF)}
+    .branch-desc{margin:12px 0 0;color:var(--utb-ink);font-size:1rem}
+    .rejoin{position:relative;max-width:880px;height:56px;margin:8px auto 2px;z-index:1}
+    .rejoin::before{
+      content:"";position:absolute;left:18%;right:18%;top:0;height:4px;background:linear-gradient(90deg,var(--utb-green),var(--utb-blue));border-radius:999px
+    }
+    .rejoin::after{
+      content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:4px;height:56px;background:var(--utb-blue);border-radius:999px
+    }
+    .rejoin-node{position:absolute;left:50%;top:-8px;transform:translateX(-50%);width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,var(--utb-green),var(--utb-blue));box-shadow:0 0 0 8px rgba(29,111,165,.10)}
+
+    .tools-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .tool-card{background:#fff;border:1px solid var(--utb-border);border-radius:20px;padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+    .tool-head{display:flex;align-items:center;gap:12px}
+    .tool-icon{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(180deg,#F2FBF7,#EDF6FC);border:1px solid #DAEAE2}
+    .tool-card h3{margin:0}.tool-card p{margin:0;color:var(--utb-gray)}
+    .tool-link{margin-top:auto;display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:800;color:var(--utb-green-dark)}
+
+    .split-two{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}
+    .tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 12px}
+    .tab-btn{
+      border:none;border-radius:999px;padding:11px 15px;font-weight:800;cursor:pointer;
+      background:#EAF4EF;color:var(--utb-green-dark);border:1px solid var(--utb-border)
+    }
+    .tab-btn[aria-selected="true"]{background:linear-gradient(135deg,var(--utb-green-dark),var(--utb-green));color:#fff}
+    .tab-panel{display:none}
+    .tab-panel.active{display:block}
+
+    details.accordion{border-top:1px solid #E3ECE7;padding:12px 0}
+    details.accordion:first-of-type{border-top:none}
+    summary{cursor:pointer;list-style:none;font-weight:800;color:var(--utb-green-dark);display:flex;align-items:center;gap:10px}
+    summary::-webkit-details-marker{display:none}
+    .sum-icon{width:30px;height:30px;border-radius:10px;background:#EEF7F2;display:grid;place-items:center;flex:0 0 auto}
+    details.accordion p{margin:10px 0 0;color:var(--utb-gray)}
+
+    .decision-card{position:relative;overflow:hidden}
+    .decision-card::after{
+      content:"";position:absolute;inset:auto -40px -50px auto;width:160px;height:160px;background:rgba(0,122,83,.07);border-radius:50%
+    }
+    .footer{margin-top:26px;color:var(--utb-gray);font-size:.94rem;text-align:center}
+    .disclaimer{font-size:.88rem;color:var(--utb-gray);margin-top:10px}
+
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    @media (max-width:1024px){
+      .cards-3,.tools-grid,.cards-2,.split-two{grid-template-columns:1fr}
+      .branches{grid-template-columns:1fr}
+      .split-connector::after,.rejoin::before{left:12%;right:12%}
+    }
+    @media (max-width:820px){
+      .hero-grid{grid-template-columns:1fr}
+      .hero-icon{width:74px;height:74px}
+      .flow-area::before{display:none}
+      .flow-step{grid-template-columns:56px 1fr;padding:16px}
+      .step-content{grid-template-columns:48px 1fr}
+      .branch-row{grid-template-columns:1fr}
+      .branch-visual{min-height:90px}
+    }
+    @media (max-width:560px){
+      .wrap{padding:0 14px}
+      .topbar .wrap, nav.quicknav .wrap{padding-left:14px;padding-right:14px}
+      .hero-shell{padding:24px 18px}
+      .hero h1{font-size:1.8rem}
+      .card,.flow-card{padding:18px}
+      .flow-step{grid-template-columns:1fr;gap:12px}
+      .step-n{width:50px;height:50px}
+      .step-content{grid-template-columns:1fr}
+      .icon-round{width:48px;height:48px}
+      .split-connector,.rejoin{display:none}
+      .split-wrap{padding-top:0}
+      .branch-card{padding:18px}
+    }
+  </style>
+</head>
+<body>
+  <svg aria-hidden="true" width="0" height="0" style="position:absolute;left:-9999px;overflow:hidden">
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15.5A2.5 2.5 0 0 0 17.5 16H6.5A2.5 2.5 0 0 0 4 18.5Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 7h8M8 10h8M8 13h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-searchdoc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M14 3v5h5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="10.5" cy="12.5" r="2.7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m12.5 14.4 2.3 2.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 5 3.3 8.2 7 10 3.7-1.8 7-5 7-10V6Z" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="9" y="10.2" width="6" height="5.2" rx="1" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 10V9a2 2 0 1 1 4 0v1" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M14 3v6h6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 17V11m0 0-2.2 2.2M12 11l2.2 2.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-brain" viewBox="0 0 24 24"><path d="M10 4a3 3 0 0 0-5 2 3.2 3.2 0 0 0 .4 6.3A3.4 3.4 0 0 0 7 18h5V6.5A2.5 2.5 0 0 0 10 4Zm4 0a3 3 0 0 1 5 2 3.2 3.2 0 0 1-.4 6.3A3.4 3.4 0 0 1 17 18h-5V6.5A2.5 2.5 0 0 1 14 4Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M18 8h3M18 12h3M18 16h3M3 8H0M3 12H0M3 16H0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-tune" viewBox="0 0 24 24"><path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h13M21 18h-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="14" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="18" r="2" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-teacher" viewBox="0 0 24 24"><circle cx="8" cy="7" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 18.5a4.5 4.5 0 0 1 9 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="13" y="11" width="8" height="6" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15 20h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="m18.5 6 1.2 1.2 2.8-2.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M12 5v11M7.5 12.5 12 17l4.5-4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pdf" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M14 3v6h6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 17h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 8V4h10v4" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="4" y="8" width="16" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 16h10v4H7z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="11" r=".8" fill="currentColor"/></symbol>
+    <symbol id="i-audio" viewBox="0 0 24 24"><path d="M5 14h4l5 4V6l-5 4H5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M18 9a4 4 0 0 1 0 6M20.8 6.8a7 7 0 0 1 0 10.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-laptop" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M2.5 18h19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18a4 4 0 1 1 .6-8A5.5 5.5 0 0 1 18.4 8a3.5 3.5 0 0 1 .6 7H7Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 10v6m0 0-2.2-2.2M12 16l2.2-2.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-student" viewBox="0 0 24 24"><circle cx="8" cy="7" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 18.5a4.5 4.5 0 0 1 9 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="12.5" y="12" width="8" height="5.5" rx="1.3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15 19.5h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-refreshdoc" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M14 3v6h6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 16a3.5 3.5 0 0 0 6 1M15.5 14a3.5 3.5 0 0 0-6-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="m13.6 18-.2-2.2 2 .8M10.4 12l.2 2.2-2-.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0-3.8 10.7c.5.4.8 1 .8 1.6V16h6v-.7c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 19h5M10 22h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4 3.5 19h17Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 9v4M12 16h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  </svg>
+
+  <div class="topbar">
+    <div class="wrap">
+      <div class="brand-mini">
+        <div class="brand-badge">UTB</div>
+        <div>
+          <div>Universidad Tecnológica de Bolívar</div>
+          <div style="font-weight:500;opacity:.86">Curso · Inteligencia Artificial para la Educación</div>
+        </div>
+      </div>
+      <div class="course-chip">SAVIO · Infografía interactiva lista para GitHub Pages</div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-shell">
+        <div class="hero-grid">
+          <div class="hero-icon" aria-hidden="true">
+            <svg width="54" height="54" viewBox="0 0 24 24" style="color:white"><use href="#i-book"></use></svg>
+          </div>
+          <div>
+            <h1>Transformación educativa con IA<br>para acceso a materiales</h1>
+            <p>Una misma fuente puede convertirse en varias rutas de acceso. La propuesta usa aprendizaje profundo para adaptar materiales, sostener la revisión docente y responder tanto a contextos rurales como urbanos.</p>
+            <div class="hero-meta">
+              <span class="hero-pill">Aprendizaje profundo · Transformer</span>
+              <span class="hero-pill">Acceso con y sin conectividad permanente</span>
+              <span class="hero-pill">Interactividad 100 % HTML, CSS y JavaScript</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="quicknav" aria-label="Secciones principales">
+    <div class="wrap">
+      <a href="#panorama">Panorama</a>
+      <a href="#flujo">Flujo técnico</a>
+      <a href="#herramientas">Herramientas</a>
+      <a href="#contextos">Contextos</a>
+      <a href="#beneficios">Beneficios y desafíos</a>
+      <a href="#decision">Decisión final</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section id="panorama" class="section cards-2" aria-labelledby="tit-panorama">
+      <article class="card">
+        <span class="kicker gold">Situación tradicional</span>
+        <h2 id="tit-panorama">Una misma versión para todo el grupo</h2>
+        <p>El docente parte de un artículo, una guía o una presentación y suele entregar el mismo recurso a todos. Traducirlo, simplificarlo o convertirlo en otro formato toma tiempo adicional. Si el material depende de una plataforma en línea, la conectividad termina convirtiéndose en una condición de acceso.</p>
+      </article>
+
+      <article class="card">
+        <span class="kicker green">Transformación con IA</span>
+        <h2>Una fuente común, varias formas de acceso</h2>
+        <p>El docente selecciona la fuente, define el objetivo de aprendizaje y usa IA para preparar versiones por nivel de lectura, idioma o formato. Después revisa el resultado y distribuye el recurso de acuerdo con el contexto real del estudiante.</p>
+      </article>
+    </section>
+
+    <section class="section">
+      <article class="card">
+        <span class="kicker blue">Modelo seleccionado</span>
+        <h2>Aprendizaje profundo con modelos de lenguaje basados en arquitectura Transformer</h2>
+        <p>Se elige porque el trabajo principal consiste en procesar lenguaje, resumir, reformular, traducir y generar recursos derivados. No se plantea entrenar un modelo desde cero. La propuesta usa modelos ya disponibles dentro de herramientas educativas y los pone al servicio de una secuencia pedagógica claramente revisada por el docente.</p>
+        <div class="note"><strong>Precisión técnica:</strong> aprendizaje profundo no es una categoría totalmente separada de aprendizaje supervisado o no supervisado. Un modelo profundo puede entrenarse con distintas estrategias. Aquí se usa la clasificación solicitada por la actividad para comparar posibilidades y justificar la elección.</div>
+      </article>
+    </section>
+
+    <section id="flujo" class="section">
+      <article class="card flow-card">
+        <div class="flow-head">
+          <div>
+            <span class="kicker blue">Diagrama de flujo técnico</span>
+            <h2 style="margin:10px 0 6px">Proceso centrado, visualmente reforzado y listo para presentar</h2>
+            <p>El flujo se organizó con una línea central, conectores visibles y dos rutas diferenciadas en el punto donde el contexto cambia. Cada paso conserva su secuencia y muestra con más claridad dónde interviene la IA y dónde entra la validación docente.</p>
+          </div>
+        </div>
+
+        <div class="flow-area" role="list" aria-label="Flujo técnico del proceso educativo transformado con IA">
+          <div class="flow-step" role="listitem">
+            <div class="step-n">1</div>
+            <div class="step-content">
+              <div class="icon-round"><svg width="30" height="30" viewBox="0 0 24 24"><use href="#i-searchdoc"></use></svg></div>
+              <div>
+                <h3 class="step-title">Selección de la fuente y del objetivo de aprendizaje</h3>
+                <p class="step-desc">Se define el material de base y lo que se espera que el estudiante aprenda con él.</p>
+              </div>
+            </div>
+          </div>
+          <div class="flow-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--utb-green)"><use href="#i-arrow"></use></svg></div>
+
+          <div class="flow-step" role="listitem">
+            <div class="step-n">2</div>
+            <div class="step-content">
+              <div class="icon-round"><svg width="30" height="30" viewBox="0 0 24 24"><use href="#i-shield"></use></svg></div>
+              <div>
+                <h3 class="step-title">Revisión de derechos, privacidad y datos personales</h3>
+                <p class="step-desc">Antes de cargar o transformar la fuente, se verifica si puede usarse y si contiene información sensible.</p>
+              </div>
+            </div>
+          </div>
+          <div class="flow-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--utb-green)"><use href="#i-arrow"></use></svg></div>
+
+          <div class="flow-step" role="listitem">
+            <div class="step-n">3</div>
+            <div class="step-content">
+              <div class="icon-round"><svg width="30" height="30" viewBox="0 0 24 24"><use href="#i-upload"></use></svg></div>
+              <div>
+                <h3 class="step-title">Preparación o carga de la fuente</h3>
+                <p class="step-desc">La fuente se limpia, organiza o carga en la herramienta que soportará el trabajo con IA.</p>
+              </div>
+            </div>
+          </div>
+          <div class="flow-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--utb-green)"><use href="#i-arrow"></use></svg></div>
+
+          <div class="flow-step" role="listitem">
+            <div class="step-n">4</div>
+            <div class="step-content">
+              <div class="icon-round"><svg width="30" height="30" viewBox="0 0 24 24"><use href="#i-brain"></use></svg></div>
+              <div>
+                <h3 class="step-title">Procesamiento con un modelo de lenguaje basado en Transformer</h3>
+                <p class="step-desc">El sistema resume, reorganiza, reformula o traduce según la tarea definida por el docente.</p>
+              </div>
+            </div>
+          </div>
+          <div class="flow-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--utb-green)"><use href="#i-arrow"></use></svg></div>
+
+          <div class="flow-step" role="listitem">
+            <div class="step-n">5</div>
+            <div class="step-content">
+              <div class="icon-round"><svg width="30" height="30" viewBox="0 0 24 24"><use href="#i-tune"></use></svg></div>
+              <div>
+                <h3 class="step-title">Adaptación: nivel de lectura, idioma, preguntas, resumen o audio</h3>
+                <p class="step-desc">A partir del mismo contenido se construyen versiones más ajustadas al objetivo y al contexto de uso.</p>
+              </div>
+            </div>
+          </div>
+          <div class="flow-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--utb-green)"><use href="#i-arrow"></use></svg></div>
+
+          <div class="flow-step" role="listitem">
+            <div class="step-n">6</div>
+            <div class="step-content">
+              <div class="icon-round"><svg width="30" height="30" viewBox="0 0 24 24"><use href="#i-teacher"></use></svg></div>
+              <div>
+                <h3 class="step-title">Validación docente frente a la fuente original</h3>
+                <p class="step-desc">Aquí se revisa exactitud, coherencia pedagógica y fidelidad conceptual antes de distribuir el material.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="split-wrap" aria-label="Bifurcación del flujo según el contexto">
+            <div class="split-node" aria-hidden="true"></div>
+            <div class="split-connector" aria-hidden="true"></div>
+            <div class="branches">
+              <article class="branch-card rural">
+                <span class="branch-tag">7A · Ruta rural</span>
+                <div class="branch-row">
+                  <div class="icon-badges" aria-hidden="true">
+                    <div class="mini-badge"><svg width="28" height="28" viewBox="0 0 24 24" style="color:#C84D35"><use href="#i-pdf"></use></svg></div>
+                    <div class="mini-badge"><svg width="28" height="28" viewBox="0 0 24 24" style="color:#93671A"><use href="#i-print"></use></svg></div>
+                    <div class="mini-badge"><svg width="28" height="28" viewBox="0 0 24 24" style="color:#1E6AA1"><use href="#i-audio"></use></svg></div>
+                  </div>
+                  <div class="branch-visual" aria-hidden="true">
+                    <svg width="100%" height="100" viewBox="0 0 280 100" preserveAspectRatio="xMidYMid meet">
+                      <rect x="0" y="62" width="280" height="38" fill="#DCEFB8"></rect>
+                      <path d="M0 68c28-28 60-12 95-26 25-10 47-31 80-25 29 5 56 36 105 18v33H0Z" fill="#A6D187"></path>
+                      <path d="M130 54h48v28h-48z" fill="#F7E6C3"></path>
+                      <path d="M124 56 154 34l30 22" fill="#D96C4A"></path>
+                      <rect x="142" y="68" width="11" height="14" fill="#8DC0E8"></rect>
+                      <circle cx="96" cy="56" r="13" fill="#72B36A"></circle>
+                      <rect x="92" y="56" width="8" height="16" fill="#7B5C36"></rect>
+                      <circle cx="210" cy="53" r="15" fill="#5FA35F"></circle>
+                      <rect x="206" y="53" width="8" height="18" fill="#7B5C36"></rect>
+                    </svg>
+                  </div>
+                </div>
+                <p class="branch-desc">PDF descargado, impresión o audio previamente generado para que el estudiante acceda al recurso aun cuando la conexión no sea estable.</p>
+              </article>
+
+              <article class="branch-card urban">
+                <span class="branch-tag">7B · Ruta urbana</span>
+                <div class="branch-row">
+                  <div class="icon-badges" aria-hidden="true">
+                    <div class="mini-badge"><svg width="28" height="28" viewBox="0 0 24 24" style="color:#1E6AA1"><use href="#i-laptop"></use></svg></div>
+                    <div class="mini-badge"><svg width="28" height="28" viewBox="0 0 24 24" style="color:#1E6AA1"><use href="#i-globe"></use></svg></div>
+                    <div class="mini-badge"><svg width="28" height="28" viewBox="0 0 24 24" style="color:#1E6AA1"><use href="#i-cloud"></use></svg></div>
+                  </div>
+                  <div class="branch-visual" aria-hidden="true">
+                    <svg width="100%" height="100" viewBox="0 0 280 100" preserveAspectRatio="xMidYMid meet">
+                      <rect x="0" y="76" width="280" height="24" fill="#CDE5F5"></rect>
+                      <rect x="46" y="44" width="26" height="32" fill="#85B6D8"></rect>
+                      <rect x="77" y="31" width="28" height="45" fill="#6EA3CC"></rect>
+                      <rect x="110" y="20" width="36" height="56" fill="#8DBFE0"></rect>
+                      <rect x="151" y="38" width="30" height="38" fill="#7FB0D3"></rect>
+                      <rect x="186" y="28" width="34" height="48" fill="#6B9DC5"></rect>
+                      <rect x="225" y="50" width="20" height="26" fill="#8DBFE0"></rect>
+                      <circle cx="38" cy="73" r="11" fill="#65AA6D"></circle>
+                      <rect x="35" y="72" width="6" height="13" fill="#7B5C36"></rect>
+                      <circle cx="248" cy="70" r="12" fill="#75B66C"></circle>
+                      <rect x="244" y="69" width="7" height="15" fill="#7B5C36"></rect>
+                    </svg>
+                  </div>
+                </div>
+                <p class="branch-desc">LMS o cuaderno digital, consulta en línea y recursos descargables de respaldo para evitar depender de un único canal.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="rejoin" aria-hidden="true"><div class="rejoin-node"></div></div>
+          <div class="flow-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--utb-blue)"><use href="#i-arrow"></use></svg></div>
+
+          <div class="flow-step" role="listitem">
+            <div class="step-n">8</div>
+            <div class="step-content">
+              <div class="icon-round"><svg width="30" height="30" viewBox="0 0 24 24"><use href="#i-student"></use></svg></div>
+              <div>
+                <h3 class="step-title">Actividad del estudiante y producción de evidencia</h3>
+                <p class="step-desc">El estudiante trabaja con el material y produce una respuesta, una actividad o una evidencia de aprendizaje.</p>
+              </div>
+            </div>
+          </div>
+          <div class="flow-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--utb-blue)"><use href="#i-arrow"></use></svg></div>
+
+          <div class="flow-step" role="listitem">
+            <div class="step-n">9</div>
+            <div class="step-content">
+              <div class="icon-round"><svg width="30" height="30" viewBox="0 0 24 24"><use href="#i-refreshdoc"></use></svg></div>
+              <div>
+                <h3 class="step-title">Revisión docente y ajuste de la siguiente versión</h3>
+                <p class="step-desc">La experiencia del estudiante retroalimenta el siguiente ciclo de preparación del recurso.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="herramientas" class="section">
+      <div class="tools-grid">
+        <article class="tool-card">
+          <div class="tool-head">
+            <div class="tool-icon"><svg width="28" height="28" viewBox="0 0 24 24"><use href="#i-book"></use></svg></div>
+            <div>
+              <h3>Gemini Notebook</h3>
+              <div class="muted">Organiza fuentes y genera recursos derivados</div>
+            </div>
+          </div>
+          <p>Es el núcleo de trabajo para reunir materiales, resumir información, construir guías y preparar productos que luego serán revisados por el docente.</p>
+          <a class="tool-link" target="_blank" rel="noopener" href="https://support.google.com/gemininotebook/answer/16206563?hl=es-419">Abrir recurso oficial ↗</a>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-head">
+            <div class="tool-icon"><svg width="28" height="28" viewBox="0 0 24 24"><use href="#i-tune"></use></svg></div>
+            <div>
+              <h3>Diffit</h3>
+              <div class="muted">Ajuste de nivel de lectura y edición didáctica</div>
+            </div>
+          </div>
+          <p>Permite preparar versiones diferenciadas del mismo contenido sin alterar el objetivo conceptual, especialmente cuando el grupo tiene ritmos o niveles distintos.</p>
+          <a class="tool-link" target="_blank" rel="noopener" href="https://support.diffit.me/hc/en-us/articles/43939244355213-How-to-adjust-the-reading-level">Abrir recurso oficial ↗</a>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-head">
+            <div class="tool-icon"><svg width="28" height="28" viewBox="0 0 24 24"><use href="#i-globe"></use></svg></div>
+            <div>
+              <h3>DeepL</h3>
+              <div class="muted">Traducción de documentos</div>
+            </div>
+          </div>
+          <p>Ayuda a reducir barreras de idioma cuando una fuente técnica o académica no está disponible en español y se necesita conservar buena parte del formato.</p>
+          <a class="tool-link" target="_blank" rel="noopener" href="https://www.deepl.com/es/features/document-translation">Abrir recurso oficial ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="contextos" class="section split-two">
+      <article class="card">
+        <span class="kicker green">Dos contextos, una misma lógica pedagógica</span>
+        <h2>Comparación contextual</h2>
+        <div class="tabs" role="tablist" aria-label="Comparación de contextos">
+          <button class="tab-btn" id="tab-rural" role="tab" aria-selected="true" aria-controls="panel-rural">Luis · rural</button>
+          <button class="tab-btn" id="tab-urbano" role="tab" aria-selected="false" aria-controls="panel-urbano">Leonardo · urbano</button>
+        </div>
+
+        <section id="panel-rural" class="tab-panel active" role="tabpanel" aria-labelledby="tab-rural">
+          <p>La propuesta no exige que cada estudiante use la IA directamente. El docente puede preparar y revisar materiales cuando tenga conexión, y después distribuirlos en formatos más resistentes a la conectividad intermitente: PDF descargado, impresión o audio ya generado.</p>
+          <p class="muted">En este contexto la IA aporta sobre todo en la preparación docente, no en la exigencia tecnológica al estudiante.</p>
+        </section>
+
+        <section id="panel-urbano" class="tab-panel" role="tabpanel" aria-labelledby="tab-urbano">
+          <p>La misma base puede ampliarse con consulta en línea, LMS o cuaderno digital. Aun así, el diseño conserva recursos descargables de respaldo para que la conexión no defina por completo la posibilidad de estudiar o entregar evidencia.</p>
+          <p class="muted">Aquí la ventaja principal está en combinar flexibilidad digital con rutas de respaldo.</p>
+        </section>
+      </article>
+
+      <article class="card">
+        <span class="kicker blue">Clave pedagógica</span>
+        <h2>Qué cambia de verdad</h2>
+        <p>La transformación no consiste en reemplazar al docente ni en entregar una IA a cada estudiante. El cambio está en usar la IA en el punto donde más valor aporta: preparar materiales derivados a partir de una fuente confiable, revisarlos pedagógicamente y distribuirlos por rutas distintas según el contexto.</p>
+        <div class="note"><strong>Punto crítico:</strong> el acceso mejora cuando la adaptación del recurso no depende de rehacer el material desde cero cada vez que cambia el nivel lector, el idioma o la forma de entrega.</div>
+      </article>
+    </section>
+
+    <section id="beneficios" class="section cards-2">
+      <article class="card">
+        <span class="kicker green">Beneficios</span>
+        <h2>Lo que la propuesta sí mejora</h2>
+        <details class="accordion" open>
+          <summary><span class="sum-icon"><svg width="18" height="18" viewBox="0 0 24 24"><use href="#i-bulb"></use></svg></span>Acceso multiformato</summary>
+          <p>Una misma fuente puede circular como guía, resumen, audio, cuestionario o material impreso, según la necesidad del grupo.</p>
+        </details>
+        <details class="accordion">
+          <summary><span class="sum-icon"><svg width="18" height="18" viewBox="0 0 24 24"><use href="#i-bulb"></use></svg></span>Adaptación sin rehacer todo desde cero</summary>
+          <p>El docente puede producir versiones con distinta complejidad y revisar si conservan el sentido disciplinar y la intención didáctica.</p>
+        </details>
+        <details class="accordion">
+          <summary><span class="sum-icon"><svg width="18" height="18" viewBox="0 0 24 24"><use href="#i-bulb"></use></svg></span>Continuidad ante conectividad variable</summary>
+          <p>La IA se usa sobre todo durante la preparación. El estudiante puede continuar trabajando después con un recurso local o descargado.</p>
+        </details>
+        <details class="accordion">
+          <summary><span class="sum-icon"><svg width="18" height="18" viewBox="0 0 24 24"><use href="#i-bulb"></use></svg></span>Más tiempo para acompañar</summary>
+          <p>Parte del trabajo operativo de resumir, traducir o generar preguntas puede reducirse y liberar tiempo para la revisión y el acompañamiento pedagógico.</p>
+        </details>
+      </article>
+
+      <article class="card">
+        <span class="kicker gold">Desafíos y limitaciones</span>
+        <h2>Lo que exige vigilancia docente</h2>
+        <details class="accordion" open>
+          <summary><span class="sum-icon"><svg width="18" height="18" viewBox="0 0 24 24"><use href="#i-alert"></use></svg></span>Errores o pérdida de matices</summary>
+          <p>La simplificación, el resumen o la traducción pueden alterar el significado. Por eso la validación frente a la fuente original no es opcional.</p>
+        </details>
+        <details class="accordion">
+          <summary><span class="sum-icon"><svg width="18" height="18" viewBox="0 0 24 24"><use href="#i-alert"></use></svg></span>Privacidad y propiedad intelectual</summary>
+          <p>No deben cargarse datos personales innecesarios y hay que respetar las condiciones de uso de los documentos o recursos fuente.</p>
+        </details>
+        <details class="accordion">
+          <summary><span class="sum-icon"><svg width="18" height="18" viewBox="0 0 24 24"><use href="#i-alert"></use></svg></span>Infraestructura para la preparación</summary>
+          <p>Que el consumo final pueda ser offline no elimina la necesidad de tecnología durante la generación, la edición y la revisión de los materiales.</p>
+        </details>
+        <details class="accordion">
+          <summary><span class="sum-icon"><svg width="18" height="18" viewBox="0 0 24 24"><use href="#i-alert"></use></svg></span>Formación docente</summary>
+          <p>Usar bien estas herramientas implica saber dar instrucciones, verificar resultados, reconocer límites y decidir cuándo la IA no conviene.</p>
+        </details>
+      </article>
+    </section>
+
+    <section id="decision" class="section">
+      <article class="card decision-card">
+        <span class="kicker green">Decisión final</span>
+        <h2>La IA aporta más en la preparación que en la sustitución del proceso pedagógico</h2>
+        <p>La propuesta no busca que la IA reemplace la lectura, el criterio docente ni la actividad del estudiante. Su aporte real está en permitir que una fuente bien elegida se convierta en versiones más accesibles y más ajustadas al contexto. La calidad final sigue dependiendo de tres cosas: la fuente seleccionada, la revisión del docente y la tarea de aprendizaje que se diseña alrededor del recurso.</p>
+        <p class="disclaimer"><strong>Nota sobre identidad visual:</strong> el enlace del curso en SAVIO requiere autenticación institucional y no fue accesible para inspección directa. Por esa razón, esta versión usa una línea visual inspirada en la identidad pública de la UTB y un HTML completamente autónomo para despliegue en GitHub Pages.</p>
+      </article>
+    </section>
+
+    <p class="footer">Leonardo Arias-Alemán · Luis Daniel Yepes Claro · Maestría en Educación Mediada por las TIC · 2026</p>
+  </main>
+
+  <script>
+    (function(){
+      const tabs = document.querySelectorAll('.tab-btn');
+      const panels = document.querySelectorAll('.tab-panel');
+      tabs.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetId = btn.getAttribute('aria-controls');
+          tabs.forEach(b => b.setAttribute('aria-selected', 'false'));
+          panels.forEach(p => p.classList.remove('active'));
+          btn.setAttribute('aria-selected', 'true');
+          document.getElementById(targetId).classList.add('active');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
