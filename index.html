@@ -3,25 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#00664F">
+  <meta name="theme-color" content="#123FD8">
   <meta name="description" content="Colección de infografías interactivas desarrolladas en la Maestría en Educación Mediada por las TIC de la Universidad Tecnológica de Bolívar.">
   <title>Infografías UTB · Maestría en Educación Mediada por las TIC</title>
 
   <style>
     :root{
-      --utb-green:#00664F;
-      --utb-green-2:#008566;
-      --utb-green-soft:#EAF7F2;
-      --utb-gold:#F3B521;
-      --utb-gold-soft:#FFF7DE;
-      --blue:#176A9B;
-      --blue-soft:#EAF4FB;
-      --ink:#17352C;
-      --muted:#60736D;
-      --line:#D7E7E0;
+      --utb-blue:#123FD8;
+      --utb-blue-dark:#0A245C;
+      --utb-cyan:#27A7E7;
+      --utb-blue-soft:#EEF4FF;
+      --utb-green:#36A66A;
+      --utb-green-soft:#ECF8F0;
+      --utb-yellow:#F5C542;
+      --blue:#27A7E7;
+      --blue-soft:#EAF7FD;
+      --ink:#14264A;
+      --muted:#5E6C88;
+      --line:#DCE5F4;
       --surface:#FFFFFF;
-      --bg:#F5FAF8;
-      --shadow:0 12px 34px rgba(17,69,55,.09);
+      --bg:#F6F8FC;
+      --shadow:0 12px 34px rgba(18,63,216,.10);
       --radius:24px;
       --max:1180px;
     }
@@ -33,9 +35,9 @@
       font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
       color:var(--ink);
       background:
-        radial-gradient(circle at 8% 6%, rgba(0,133,102,.09), transparent 24%),
-        radial-gradient(circle at 92% 18%, rgba(23,106,155,.07), transparent 22%),
-        linear-gradient(180deg,#F9FCFB 0%,var(--bg) 100%);
+        radial-gradient(circle at 8% 6%, rgba(18,63,216,.08), transparent 24%),
+        radial-gradient(circle at 92% 18%, rgba(39,167,231,.08), transparent 22%),
+        linear-gradient(180deg,#FAFBFF 0%,var(--bg) 100%);
       line-height:1.55;
     }
 
@@ -44,9 +46,9 @@
     .wrap{width:min(var(--max),calc(100% - 32px));margin:auto}
 
     .topbar{
-      background:linear-gradient(90deg,#004C3C,var(--utb-green));
+      background:linear-gradient(90deg,var(--utb-blue-dark),var(--utb-blue));
       color:#fff;
-      border-bottom:4px solid var(--utb-gold);
+      border-bottom:4px solid var(--utb-green);
     }
     .topbar-inner{
       min-height:76px;
@@ -58,13 +60,14 @@
     }
     .brand{display:flex;align-items:center;gap:14px;min-width:0}
     .brand-mark{
-      width:52px;height:52px;border-radius:16px;background:#fff;color:var(--utb-green);
-      display:grid;place-items:center;font-weight:900;letter-spacing:.03em;
-      box-shadow:0 8px 22px rgba(0,0,0,.14);flex:0 0 auto;
+      width:60px;height:60px;border-radius:18px;background:#fff;
+      display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.16);flex:0 0 auto;
+      padding:8px;border:1px solid rgba(255,255,255,.32);
     }
+    .brand-mark img{max-width:100%;max-height:100%;object-fit:contain}.logo-fallback{display:none;font-weight:900;color:var(--utb-blue);font-size:1rem}
+    .brand-sub{font-size:.86rem;opacity:.88;margin-top:3px}
     .brand-title{font-weight:850;font-size:1rem;line-height:1.2}
-    .brand-sub{font-size:.86rem;opacity:.84;margin-top:3px}
-    .top-chip{
+        .top-chip{
       border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.11);
       padding:8px 12px;border-radius:999px;font-weight:700;font-size:.86rem;white-space:nowrap;
     }
@@ -72,20 +75,21 @@
     .hero{padding:42px 0 26px}
     .hero-card{
       position:relative;overflow:hidden;
-      background:linear-gradient(135deg,#075440 0%,#00785B 50%,#176A9B 100%);
+      background:linear-gradient(135deg,var(--utb-blue-dark) 0%,var(--utb-blue) 58%,#27A7E7 100%);
       color:#fff;border-radius:34px;padding:38px;box-shadow:var(--shadow);
     }
     .hero-card::before,.hero-card::after{
       content:"";position:absolute;border-radius:50%;pointer-events:none;
     }
     .hero-card::before{width:280px;height:280px;right:-90px;top:-100px;background:rgba(255,255,255,.08)}
-    .hero-card::after{width:190px;height:190px;left:-55px;bottom:-80px;background:rgba(243,181,33,.12)}
+    .hero-card::after{width:190px;height:190px;left:-55px;bottom:-80px;background:rgba(39,167,231,.14)}
     .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:92px 1fr;gap:24px;align-items:start}
     .hero-icon{
-      width:92px;height:92px;border-radius:26px;background:rgba(255,255,255,.14);
-      border:1px solid rgba(255,255,255,.22);display:grid;place-items:center;
-      backdrop-filter:blur(5px);
+      width:92px;height:92px;border-radius:26px;background:rgba(255,255,255,.98);
+      border:1px solid rgba(255,255,255,.32);display:grid;place-items:center;
+      backdrop-filter:blur(5px); padding:12px; box-shadow:0 12px 28px rgba(0,0,0,.14);
     }
+    .hero-icon img{max-width:100%;max-height:100%;object-fit:contain}.hero-icon .logo-fallback{font-size:1.15rem}
     .hero h1{font-size:clamp(2.15rem,5vw,4rem);line-height:1.02;margin:0;letter-spacing:-.035em}
     .hero p{max-width:850px;font-size:1.07rem;color:rgba(255,255,255,.9);margin:16px 0 0}
     .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
@@ -95,7 +99,7 @@
     .toolbar{
       display:grid;grid-template-columns:minmax(240px,1fr) auto;gap:14px;align-items:center;
       background:rgba(255,255,255,.86);border:1px solid var(--line);border-radius:22px;
-      padding:14px;box-shadow:0 8px 24px rgba(17,69,55,.05);backdrop-filter:blur(9px);
+      padding:14px;box-shadow:0 8px 24px rgba(18,63,216,.05);backdrop-filter:blur(9px);
     }
     .search{position:relative}
     .search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--muted)}
@@ -103,13 +107,13 @@
       width:100%;border:1px solid var(--line);border-radius:14px;padding:13px 14px 13px 45px;
       background:#fff;color:var(--ink);outline:none;
     }
-    .search input:focus{border-color:var(--utb-green-2);box-shadow:0 0 0 4px rgba(0,133,102,.1)}
+    .search input:focus{border-color:var(--utb-cyan);box-shadow:0 0 0 4px rgba(0,133,102,.1)}
     .filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
     .filter{
-      border:1px solid var(--line);background:#fff;color:var(--utb-green);font-weight:800;
+      border:1px solid var(--line);background:#fff;color:var(--utb-blue);font-weight:800;
       padding:10px 13px;border-radius:999px;cursor:pointer;transition:.18s ease;
     }
-    .filter:hover,.filter.active{background:var(--utb-green);color:#fff;border-color:var(--utb-green)}
+    .filter:hover,.filter.active{background:var(--utb-blue);color:#fff;border-color:var(--utb-blue)}
 
     main{padding:18px 0 56px}
     .section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin:24px 0 14px}
@@ -120,38 +124,40 @@
     .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
     .infocard{
       background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+      position:relative;
       overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;min-height:390px;
       transition:transform .2s ease, box-shadow .2s ease,border-color .2s ease;
     }
-    .infocard:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(17,69,55,.13);border-color:#BFD9CE}
+    .infocard:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(17,69,55,.13);border-color:#C9D8F2}
+    .infocard::before{content:"";position:absolute;left:0;top:0;right:0;height:5px;background:linear-gradient(90deg,var(--utb-blue),var(--utb-green));}
     .cover{
       min-height:188px;padding:22px;position:relative;display:flex;align-items:flex-end;
-      background:linear-gradient(135deg,#EAF7F2 0%,#EEF7FC 100%);overflow:hidden;
+      background:linear-gradient(135deg,#EEF4FF 0%,#ECF8F0 100%);overflow:hidden;
     }
-    .cover::after{content:"";position:absolute;right:-24px;top:-36px;width:150px;height:150px;border-radius:50%;background:rgba(0,102,79,.08)}
+    .cover::after{content:"";position:absolute;right:-24px;top:-36px;width:150px;height:150px;border-radius:50%;background:rgba(39,167,231,.14)}
     .cover-icon{
-      width:76px;height:76px;border-radius:22px;background:#fff;color:var(--utb-green);
+      width:76px;height:76px;border-radius:22px;background:#fff;color:var(--utb-blue);
       display:grid;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.1);z-index:1;
     }
     .cover-shape{position:absolute;right:24px;bottom:20px;color:rgba(23,106,155,.46)}
     .body{padding:20px;display:flex;flex-direction:column;gap:12px;flex:1}
     .tagrow{display:flex;gap:7px;flex-wrap:wrap}
-    .tag{padding:6px 9px;border-radius:999px;font-size:.75rem;font-weight:850;background:var(--utb-green-soft);color:var(--utb-green)}
+    .tag{padding:6px 9px;border-radius:999px;font-size:.75rem;font-weight:850;background:var(--utb-blue-soft);color:var(--utb-blue)}
     .tag.blue{background:var(--blue-soft);color:var(--blue)}
-    .tag.gold{background:var(--utb-gold-soft);color:#805D0E}
+    .tag.gold{background:var(--utb-green-soft);color:#2C7A52}
     .infocard h3{margin:0;font-size:1.22rem;line-height:1.22}
     .infocard p{margin:0;color:var(--muted);font-size:.94rem}
     .card-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:8px}
     .meta-small{font-size:.82rem;color:var(--muted)}
     .open-link{
-      text-decoration:none;display:inline-flex;align-items:center;gap:8px;background:var(--utb-green);
+      text-decoration:none;display:inline-flex;align-items:center;gap:8px;background:var(--utb-blue);
       color:#fff;padding:10px 13px;border-radius:12px;font-weight:850;white-space:nowrap;
       transition:.18s ease;
     }
     .open-link:hover{background:var(--utb-green-dark,#004C3C);transform:translateY(-1px)}
 
     .empty{
-      display:none;grid-column:1/-1;text-align:center;padding:42px 20px;background:#fff;border:1px dashed #BFD9CE;border-radius:22px;color:var(--muted)
+      display:none;grid-column:1/-1;text-align:center;padding:42px 20px;background:#fff;border:1px dashed #C9D8F2;border-radius:22px;color:var(--muted)
     }
 
     .about{
@@ -160,13 +166,13 @@
     }
     .about h2{margin:0 0 8px}
     .about p{margin:0;color:var(--muted)}
-    .about-box{background:linear-gradient(135deg,var(--utb-green-soft),var(--blue-soft));border-radius:18px;padding:18px}
+    .about-box{background:linear-gradient(135deg,var(--utb-blue-soft),var(--utb-green-soft));border-radius:18px;padding:18px}
     .about-list{margin:0;padding-left:20px;color:var(--ink)}
     .about-list li+li{margin-top:7px}
 
     footer{padding:28px 0 38px;color:var(--muted);font-size:.9rem}
     .footer-inner{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:20px}
-    .footer-inner a{color:var(--utb-green);font-weight:800;text-decoration:none}
+    .footer-inner a{color:var(--utb-blue);font-weight:800;text-decoration:none}
 
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
@@ -207,13 +213,13 @@
   <header class="topbar">
     <div class="wrap topbar-inner">
       <div class="brand">
-        <div class="brand-mark">UTB</div>
+        <div class="brand-mark"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr2n472h7dareQXnH-QTQGHZzmgZZy5botpzbS_XTCwg&s=10" alt="Logo UTB" referrerpolicy="no-referrer"><span class="logo-fallback" aria-hidden="true">UTB</span></div>
         <div>
           <div class="brand-title">Universidad Tecnológica de Bolívar</div>
           <div class="brand-sub">Maestría en Educación Mediada por las TIC</div>
         </div>
       </div>
-      <div class="top-chip">Colección académica · 2026</div>
+      <div class="top-chip">Colección académica · Maestría UTB · 2026</div>
     </div>
   </header>
 
@@ -221,9 +227,7 @@
     <div class="wrap">
       <div class="hero-card">
         <div class="hero-grid">
-          <div class="hero-icon">
-            <svg width="54" height="54" viewBox="0 0 24 24"><use href="#i-grid"></use></svg>
-          </div>
+          <div class="hero-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr2n472h7dareQXnH-QTQGHZzmgZZy5botpzbS_XTCwg&s=10" alt="Logo UTB" referrerpolicy="no-referrer"><span class="logo-fallback" aria-hidden="true">UTB</span></div>
           <div>
             <h1>Infografías UTB</h1>
             <p>Colección de recursos visuales e interactivos desarrollados durante la Maestría en Educación Mediada por las TIC. Cada infografía reúne conceptos, análisis y aplicaciones construidas en las actividades académicas de los cursos.</p>
@@ -325,6 +329,7 @@
   </footer>
 
   <script>
+    document.querySelectorAll('img[alt="Logo UTB"]').forEach(img=>{img.addEventListener('error',()=>{img.style.display='none'; const f=img.nextElementSibling; if(f) f.style.display='block';});});
     (() => {
       const searchInput = document.getElementById('searchInput');
       const filters = [...document.querySelectorAll('.filter')];
@@ -337,7 +342,7 @@
         return value
           .toLowerCase()
           .normalize('NFD')
-          .replace(/[̀-ͯ]/g,'');
+          .replace(/[\u0300-\u036f]/g,'');
       }
 
       function applyFilters(){
