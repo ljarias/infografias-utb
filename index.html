@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#00664F">
+  <meta name="description" content="Colección de infografías interactivas desarrolladas en la Maestría en Educación Mediada por las TIC de la Universidad Tecnológica de Bolívar.">
+  <title>Infografías UTB · Maestría en Educación Mediada por las TIC</title>
+
+  <style>
+    :root{
+      --utb-green:#00664F;
+      --utb-green-2:#008566;
+      --utb-green-soft:#EAF7F2;
+      --utb-gold:#F3B521;
+      --utb-gold-soft:#FFF7DE;
+      --blue:#176A9B;
+      --blue-soft:#EAF4FB;
+      --ink:#17352C;
+      --muted:#60736D;
+      --line:#D7E7E0;
+      --surface:#FFFFFF;
+      --bg:#F5FAF8;
+      --shadow:0 12px 34px rgba(17,69,55,.09);
+      --radius:24px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 8% 6%, rgba(0,133,102,.09), transparent 24%),
+        radial-gradient(circle at 92% 18%, rgba(23,106,155,.07), transparent 22%),
+        linear-gradient(180deg,#F9FCFB 0%,var(--bg) 100%);
+      line-height:1.55;
+    }
+
+    a{color:inherit}
+    button,input{font:inherit}
+    .wrap{width:min(var(--max),calc(100% - 32px));margin:auto}
+
+    .topbar{
+      background:linear-gradient(90deg,#004C3C,var(--utb-green));
+      color:#fff;
+      border-bottom:4px solid var(--utb-gold);
+    }
+    .topbar-inner{
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:12px 0;
+    }
+    .brand{display:flex;align-items:center;gap:14px;min-width:0}
+    .brand-mark{
+      width:52px;height:52px;border-radius:16px;background:#fff;color:var(--utb-green);
+      display:grid;place-items:center;font-weight:900;letter-spacing:.03em;
+      box-shadow:0 8px 22px rgba(0,0,0,.14);flex:0 0 auto;
+    }
+    .brand-title{font-weight:850;font-size:1rem;line-height:1.2}
+    .brand-sub{font-size:.86rem;opacity:.84;margin-top:3px}
+    .top-chip{
+      border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.11);
+      padding:8px 12px;border-radius:999px;font-weight:700;font-size:.86rem;white-space:nowrap;
+    }
+
+    .hero{padding:42px 0 26px}
+    .hero-card{
+      position:relative;overflow:hidden;
+      background:linear-gradient(135deg,#075440 0%,#00785B 50%,#176A9B 100%);
+      color:#fff;border-radius:34px;padding:38px;box-shadow:var(--shadow);
+    }
+    .hero-card::before,.hero-card::after{
+      content:"";position:absolute;border-radius:50%;pointer-events:none;
+    }
+    .hero-card::before{width:280px;height:280px;right:-90px;top:-100px;background:rgba(255,255,255,.08)}
+    .hero-card::after{width:190px;height:190px;left:-55px;bottom:-80px;background:rgba(243,181,33,.12)}
+    .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:92px 1fr;gap:24px;align-items:start}
+    .hero-icon{
+      width:92px;height:92px;border-radius:26px;background:rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.22);display:grid;place-items:center;
+      backdrop-filter:blur(5px);
+    }
+    .hero h1{font-size:clamp(2.15rem,5vw,4rem);line-height:1.02;margin:0;letter-spacing:-.035em}
+    .hero p{max-width:850px;font-size:1.07rem;color:rgba(255,255,255,.9);margin:16px 0 0}
+    .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+    .pill{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);font-weight:700;font-size:.89rem}
+
+    .toolbar-wrap{padding:8px 0 8px}
+    .toolbar{
+      display:grid;grid-template-columns:minmax(240px,1fr) auto;gap:14px;align-items:center;
+      background:rgba(255,255,255,.86);border:1px solid var(--line);border-radius:22px;
+      padding:14px;box-shadow:0 8px 24px rgba(17,69,55,.05);backdrop-filter:blur(9px);
+    }
+    .search{position:relative}
+    .search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--muted)}
+    .search input{
+      width:100%;border:1px solid var(--line);border-radius:14px;padding:13px 14px 13px 45px;
+      background:#fff;color:var(--ink);outline:none;
+    }
+    .search input:focus{border-color:var(--utb-green-2);box-shadow:0 0 0 4px rgba(0,133,102,.1)}
+    .filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .filter{
+      border:1px solid var(--line);background:#fff;color:var(--utb-green);font-weight:800;
+      padding:10px 13px;border-radius:999px;cursor:pointer;transition:.18s ease;
+    }
+    .filter:hover,.filter.active{background:var(--utb-green);color:#fff;border-color:var(--utb-green)}
+
+    main{padding:18px 0 56px}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin:24px 0 14px}
+    .section-head h2{margin:0;font-size:clamp(1.45rem,3vw,2.05rem);letter-spacing:-.02em}
+    .section-head p{margin:4px 0 0;color:var(--muted)}
+    .counter{font-size:.9rem;color:var(--muted);white-space:nowrap}
+
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .infocard{
+      background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+      overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;min-height:390px;
+      transition:transform .2s ease, box-shadow .2s ease,border-color .2s ease;
+    }
+    .infocard:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(17,69,55,.13);border-color:#BFD9CE}
+    .cover{
+      min-height:188px;padding:22px;position:relative;display:flex;align-items:flex-end;
+      background:linear-gradient(135deg,#EAF7F2 0%,#EEF7FC 100%);overflow:hidden;
+    }
+    .cover::after{content:"";position:absolute;right:-24px;top:-36px;width:150px;height:150px;border-radius:50%;background:rgba(0,102,79,.08)}
+    .cover-icon{
+      width:76px;height:76px;border-radius:22px;background:#fff;color:var(--utb-green);
+      display:grid;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.1);z-index:1;
+    }
+    .cover-shape{position:absolute;right:24px;bottom:20px;color:rgba(23,106,155,.46)}
+    .body{padding:20px;display:flex;flex-direction:column;gap:12px;flex:1}
+    .tagrow{display:flex;gap:7px;flex-wrap:wrap}
+    .tag{padding:6px 9px;border-radius:999px;font-size:.75rem;font-weight:850;background:var(--utb-green-soft);color:var(--utb-green)}
+    .tag.blue{background:var(--blue-soft);color:var(--blue)}
+    .tag.gold{background:var(--utb-gold-soft);color:#805D0E}
+    .infocard h3{margin:0;font-size:1.22rem;line-height:1.22}
+    .infocard p{margin:0;color:var(--muted);font-size:.94rem}
+    .card-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:8px}
+    .meta-small{font-size:.82rem;color:var(--muted)}
+    .open-link{
+      text-decoration:none;display:inline-flex;align-items:center;gap:8px;background:var(--utb-green);
+      color:#fff;padding:10px 13px;border-radius:12px;font-weight:850;white-space:nowrap;
+      transition:.18s ease;
+    }
+    .open-link:hover{background:var(--utb-green-dark,#004C3C);transform:translateY(-1px)}
+
+    .empty{
+      display:none;grid-column:1/-1;text-align:center;padding:42px 20px;background:#fff;border:1px dashed #BFD9CE;border-radius:22px;color:var(--muted)
+    }
+
+    .about{
+      margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);
+      display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;
+    }
+    .about h2{margin:0 0 8px}
+    .about p{margin:0;color:var(--muted)}
+    .about-box{background:linear-gradient(135deg,var(--utb-green-soft),var(--blue-soft));border-radius:18px;padding:18px}
+    .about-list{margin:0;padding-left:20px;color:var(--ink)}
+    .about-list li+li{margin-top:7px}
+
+    footer{padding:28px 0 38px;color:var(--muted);font-size:.9rem}
+    .footer-inner{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:20px}
+    .footer-inner a{color:var(--utb-green);font-weight:800;text-decoration:none}
+
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    @media(max-width:980px){
+      .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .about{grid-template-columns:1fr}
+    }
+    @media(max-width:760px){
+      .topbar-inner{align-items:flex-start}
+      .top-chip{display:none}
+      .hero-grid{grid-template-columns:1fr}
+      .hero-icon{width:74px;height:74px}
+      .hero-card{padding:28px 22px}
+      .toolbar{grid-template-columns:1fr}
+      .filters{justify-content:flex-start}
+      .section-head{align-items:flex-start;flex-direction:column}
+    }
+    @media(max-width:620px){
+      .grid{grid-template-columns:1fr}
+      .wrap{width:min(100% - 22px,var(--max))}
+      .brand-sub{display:none}
+      .brand-mark{width:46px;height:46px}
+      .hero h1{font-size:2rem}
+    }
+  </style>
+</head>
+
+<body>
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute;overflow:hidden">
+    <symbol id="i-grid" viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15.5A2.5 2.5 0 0 0 17.5 16H6.5A2.5 2.5 0 0 0 4 18.5Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 7h8M8 10h8M8 13h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-ai" viewBox="0 0 24 24"><path d="M10 4a3 3 0 0 0-5 2 3.2 3.2 0 0 0 .4 6.3A3.4 3.4 0 0 0 7 18h5V6.5A2.5 2.5 0 0 0 10 4Zm4 0a3 3 0 0 1 5 2 3.2 3.2 0 0 1-.4 6.3A3.4 3.4 0 0 1 17 18h-5V6.5A2.5 2.5 0 0 1 14 4Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M18 8h3M18 12h3M18 16h3M3 8H0M3 12H0M3 16H0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-network" viewBox="0 0 24 24"><circle cx="6" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="18" r="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m8 11 8-4M8 13l8 4" stroke="currentColor" stroke-width="1.7"/></symbol>
+  </svg>
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">UTB</div>
+        <div>
+          <div class="brand-title">Universidad Tecnológica de Bolívar</div>
+          <div class="brand-sub">Maestría en Educación Mediada por las TIC</div>
+        </div>
+      </div>
+      <div class="top-chip">Colección académica · 2026</div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div class="hero-icon">
+            <svg width="54" height="54" viewBox="0 0 24 24"><use href="#i-grid"></use></svg>
+          </div>
+          <div>
+            <h1>Infografías UTB</h1>
+            <p>Colección de recursos visuales e interactivos desarrollados durante la Maestría en Educación Mediada por las TIC. Cada infografía reúne conceptos, análisis y aplicaciones construidas en las actividades académicas de los cursos.</p>
+            <div class="meta">
+              <span class="pill">Educación mediada por TIC</span>
+              <span class="pill">Infografías interactivas</span>
+              <span class="pill">GitHub Pages</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="toolbar-wrap" aria-label="Buscador y filtros">
+    <div class="wrap">
+      <div class="toolbar">
+        <label class="search">
+          <span class="sr-only">Buscar infografía</span>
+          <svg width="20" height="20" viewBox="0 0 24 24"><use href="#i-search"></use></svg>
+          <input id="searchInput" type="search" placeholder="Buscar por tema, curso o palabra clave…" autocomplete="off">
+        </label>
+        <div class="filters" role="group" aria-label="Filtrar infografías">
+          <button class="filter active" data-filter="all">Todas</button>
+          <button class="filter" data-filter="ia">Inteligencia artificial</button>
+          <button class="filter" data-filter="educacion">Educación</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>Infografías publicadas</h2>
+        <p>Selecciona una tarjeta para abrir el recurso interactivo.</p>
+      </div>
+      <div class="counter" id="counter">1 recurso publicado</div>
+    </div>
+
+    <section class="grid" id="cardsGrid" aria-live="polite">
+      <article class="infocard" data-tags="ia educacion materiales acceso aprendizaje-profundo transformer conectividad">
+        <div class="cover">
+          <div class="cover-icon">
+            <svg width="42" height="42" viewBox="0 0 24 24"><use href="#i-ai"></use></svg>
+          </div>
+          <svg class="cover-shape" width="130" height="92" viewBox="0 0 130 92" aria-hidden="true">
+            <circle cx="23" cy="49" r="11" fill="currentColor" opacity=".35"></circle>
+            <circle cx="64" cy="28" r="10" fill="currentColor" opacity=".55"></circle>
+            <circle cx="104" cy="58" r="11" fill="currentColor" opacity=".38"></circle>
+            <path d="M31 44 55 32M73 33l22 18M33 55l60 5" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" opacity=".55"></path>
+          </svg>
+        </div>
+        <div class="body">
+          <div class="tagrow">
+            <span class="tag">IA</span>
+            <span class="tag blue">Educación</span>
+            <span class="tag gold">Actividad 2</span>
+          </div>
+          <h3>Transformación educativa con IA para acceso a materiales</h3>
+          <p>Flujo de implementación con aprendizaje profundo, adaptación de recursos y rutas diferenciadas para contextos rurales y urbanos.</p>
+          <div class="card-footer">
+            <span class="meta-small">Inteligencia Artificial para la Educación · 2026</span>
+            <a class="open-link" href="acceso-materiales-ia/" aria-label="Abrir infografía Transformación educativa con IA para acceso a materiales">
+              Abrir
+              <svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-arrow"></use></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <div class="empty" id="emptyState">
+        <strong>No encontramos infografías con ese criterio.</strong><br>
+        Prueba otra palabra o vuelve al filtro “Todas”.
+      </div>
+    </section>
+
+    <section class="about">
+      <div>
+        <h2>Sobre la colección</h2>
+        <p><strong>Infografías UTB</strong> está pensada como un repositorio académico en crecimiento. Cada nueva actividad puede publicarse en su propia carpeta y aparecer en esta portada como una tarjeta adicional, sin modificar las demás.</p>
+      </div>
+      <div class="about-box">
+        <ul class="about-list">
+          <li>Una URL independiente por infografía.</li>
+          <li>Diseño responsive para celular y computador.</li>
+          <li>Publicación estática compatible con GitHub Pages.</li>
+          <li>Navegación simple desde una sola portada.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div>Infografías UTB · Maestría en Educación Mediada por las TIC · 2026</div>
+      <div>Leonardo Arias-Alemán · <a href="#">Inicio</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const searchInput = document.getElementById('searchInput');
+      const filters = [...document.querySelectorAll('.filter')];
+      const cards = [...document.querySelectorAll('.infocard')];
+      const emptyState = document.getElementById('emptyState');
+      const counter = document.getElementById('counter');
+      let activeFilter = 'all';
+
+      function normalize(value){
+        return value
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[̀-ͯ]/g,'');
+      }
+
+      function applyFilters(){
+        const query = normalize(searchInput.value.trim());
+        let visible = 0;
+
+        cards.forEach(card => {
+          const searchable = normalize(card.textContent + ' ' + (card.dataset.tags || ''));
+          const matchesSearch = !query || searchable.includes(query);
+          const matchesFilter = activeFilter === 'all' || (card.dataset.tags || '').split(' ').includes(activeFilter);
+          const show = matchesSearch && matchesFilter;
+          card.hidden = !show;
+          if(show) visible++;
+        });
+
+        emptyState.style.display = visible ? 'none' : 'block';
+        counter.textContent = visible === 1 ? '1 recurso publicado' : `${visible} recursos publicados`;
+      }
+
+      searchInput.addEventListener('input', applyFilters);
+
+      filters.forEach(button => {
+        button.addEventListener('click', () => {
+          filters.forEach(item => item.classList.remove('active'));
+          button.classList.add('active');
+          activeFilter = button.dataset.filter;
+          applyFilters();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
