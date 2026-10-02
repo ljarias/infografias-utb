@@ -7,17 +7,17 @@
   <meta name="description" content="Infografía interactiva sobre la transformación del acceso a materiales educativos con IA, pensada para despliegue en GitHub Pages.">
   <style>
     :root{
-      --utb-green:#007A53;
-      --utb-green-dark:#005A3D;
-      --utb-green-soft:#EAF7F1;
-      --utb-gold:#F0B323;
-      --utb-ink:#18322B;
-      --utb-gray:#5B6D67;
-      --utb-bg:#F5FAF8;
+      --utb-blue:#123FD8;
+      --utb-blue-dark:#0A245C;
+      --utb-blue-soft:#EEF4FF;
+      --utb-cyan:#27A7E7;
+      --utb-cyan-soft:#EAF7FD;
+      --utb-green:#36A66A;
+      --utb-ink:#14264A;
+      --utb-gray:#5E6C88;
+      --utb-bg:#F6F8FC;
       --utb-card:#FFFFFF;
-      --utb-border:#D5E6DE;
-      --utb-blue:#1D6FA5;
-      --utb-blue-soft:#EBF5FB;
+      --utb-border:#DCE5F4;
       --shadow:0 12px 32px rgba(0,0,0,.08);
       --radius:22px;
       --max:1180px;
@@ -29,20 +29,20 @@
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       color:var(--utb-ink);
       background:
-        radial-gradient(circle at top left, rgba(0,122,83,.08), transparent 26%),
-        radial-gradient(circle at bottom right, rgba(29,111,165,.08), transparent 24%),
-        linear-gradient(180deg,#F8FCFA 0%,#F1F8F5 100%);
+        radial-gradient(circle at top left, rgba(18,63,216,.09), transparent 26%),
+        radial-gradient(circle at bottom right, rgba(39,167,231,.09), transparent 24%),
+        linear-gradient(180deg,#FAFBFF 0%,#F6F8FC 100%);
       line-height:1.55;
     }
     img{max-width:100%;display:block}
-    a{color:var(--utb-green-dark)}
+    a{color:var(--utb-blue-dark)}
     .wrap{max-width:var(--max);margin:auto;padding:0 20px}
 
     .topbar{
-      background:linear-gradient(90deg,var(--utb-green-dark),var(--utb-green));
+      background:linear-gradient(90deg,var(--utb-blue-dark),var(--utb-cyan));
       color:#fff;
       font-size:.92rem;
-      border-bottom:4px solid var(--utb-gold);
+      border-bottom:4px solid var(--utb-green);
     }
     .topbar .wrap{
       display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 20px;
@@ -50,16 +50,18 @@
     }
     .brand-mini{display:flex;align-items:center;gap:12px;font-weight:700}
     .brand-badge{
-      width:42px;height:42px;border-radius:12px;background:#fff;color:var(--utb-green-dark);
-      display:grid;place-items:center;font-weight:900;letter-spacing:.04em;box-shadow:0 4px 18px rgba(0,0,0,.12)
+      width:54px;height:54px;border-radius:14px;background:#fff;
+      display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.14); padding:7px;
     }
+    .brand-badge img{max-width:100%;max-height:100%;object-fit:contain}.logo-fallback{display:none;font-weight:900;color:var(--utb-blue);font-size:.9rem}
     .course-chip{
-      padding:8px 12px;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:rgba(255,255,255,.12)
+      padding:8px 12px;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:rgba(255,255,255,.12);color:#fff;text-decoration:none;font-weight:700
     }
+    .course-chip:hover{background:rgba(255,255,255,.20)}
 
     .hero{padding:38px 0 22px}
     .hero-shell{
-      background:linear-gradient(135deg,#0C5E45 0%,#0A7D56 46%,#1D6FA5 100%);
+      background:linear-gradient(135deg,var(--utb-blue-dark) 0%,var(--utb-blue) 58%,var(--utb-cyan) 100%);
       color:#fff;border-radius:32px;padding:34px;position:relative;overflow:hidden;box-shadow:var(--shadow)
     }
     .hero-shell::before,
@@ -70,24 +72,25 @@
     .hero-shell::after{width:160px;height:160px;left:-38px;bottom:-50px}
     .hero-grid{display:grid;grid-template-columns:92px 1fr;gap:24px;align-items:start;position:relative;z-index:1}
     .hero-icon{
-      width:92px;height:92px;border-radius:24px;background:rgba(255,255,255,.14);backdrop-filter:blur(4px);
-      display:grid;place-items:center;border:1px solid rgba(255,255,255,.25)
+      width:92px;height:92px;border-radius:24px;background:rgba(255,255,255,.98);backdrop-filter:blur(4px);
+      display:grid;place-items:center;border:1px solid rgba(255,255,255,.25);padding:12px;box-shadow:0 12px 28px rgba(0,0,0,.14)
     }
+    .hero-icon img{max-width:100%;max-height:100%;object-fit:contain}.hero-icon .logo-fallback{font-size:1.1rem}
     .hero h1{margin:0 0 10px;font-size:clamp(2rem,4vw,3.35rem);line-height:1.08}
     .hero p{margin:0;color:rgba(255,255,255,.93);max-width:860px;font-size:1.05rem}
     .hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
     .hero-pill{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);font-weight:600;font-size:.92rem}
 
     nav.quicknav{
-      position:sticky;top:0;z-index:20;background:rgba(248,252,250,.88);backdrop-filter:blur(10px);
+      position:sticky;top:0;z-index:20;background:rgba(250,251,255,.90);backdrop-filter:blur(10px);
       border-bottom:1px solid rgba(0,0,0,.06)
     }
     nav.quicknav .wrap{display:flex;gap:10px;overflow:auto;padding:12px 20px}
     .quicknav a{
       text-decoration:none;white-space:nowrap;padding:10px 14px;border-radius:999px;
-      background:#fff;border:1px solid var(--utb-border);font-weight:700;color:var(--utb-green-dark)
+      background:#fff;border:1px solid var(--utb-border);font-weight:700;color:var(--utb-blue-dark)
     }
-    .quicknav a:hover{background:var(--utb-green-soft)}
+    .quicknav a:hover{background:var(--utb-cyan-soft);border-color:var(--utb-green)}
 
     main{padding:24px 0 54px}
     .section{margin-top:26px}
@@ -95,15 +98,16 @@
     .cards-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
     .card{
       background:var(--utb-card);border:1px solid var(--utb-border);border-radius:var(--radius);
-      padding:22px;box-shadow:var(--shadow)
+      padding:22px;box-shadow:var(--shadow); position:relative; overflow:hidden;
     }
+    .card::before{content:"";position:absolute;left:0;top:0;right:0;height:4px;background:linear-gradient(90deg,var(--utb-cyan),var(--utb-green));}
     .card h2,.card h3{margin:0 0 10px}
     .kicker{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border-radius:999px;font-weight:800;font-size:.82rem;letter-spacing:.02em}
-    .kicker.green{background:var(--utb-green-soft);color:var(--utb-green-dark)}
-    .kicker.blue{background:var(--utb-blue-soft);color:var(--utb-blue)}
+    .kicker.green{background:var(--utb-cyan-soft);color:var(--utb-blue-dark)}
+    .kicker.blue{background:var(--utb-cyan-soft);color:var(--utb-cyan)}
     .kicker.gold{background:#FFF7DF;color:#8D6711}
     .muted{color:var(--utb-gray)}
-    .note{background:#FFF9EA;border-left:6px solid var(--utb-gold);padding:16px 18px;border-radius:16px;margin-top:14px}
+    .note{background:#FFF9EA;border-left:6px solid var(--utb-green);padding:16px 18px;border-radius:16px;margin-top:14px}
 
     /* FLOW */
     .flow-card{padding:26px;background:linear-gradient(180deg,#ffffff 0%,#FBFDFC 100%)}
@@ -112,19 +116,19 @@
     .flow-area{position:relative;padding:8px 0 0}
     .flow-area::before{
       content:"";position:absolute;left:50%;top:44px;bottom:44px;width:6px;transform:translateX(-50%);
-      background:linear-gradient(180deg,rgba(0,122,83,.14),rgba(29,111,165,.18),rgba(0,122,83,.14));
+      background:linear-gradient(180deg,rgba(18,63,216,.16),rgba(39,167,231,.22),rgba(18,63,216,.16));
       border-radius:999px;z-index:0;
     }
     .flow-step{
-      position:relative;z-index:1;max-width:920px;margin:0 auto 16px;background:#fff;border:2px solid #CFE1DA;
+      position:relative;z-index:1;max-width:920px;margin:0 auto 16px;background:#fff;border:2px solid #D5E2F6;
       border-radius:24px;padding:18px 22px;display:grid;grid-template-columns:68px 1fr;gap:16px;align-items:center;
       box-shadow:0 10px 24px rgba(0,0,0,.06);transition:transform .2s ease, box-shadow .2s ease;
     }
     .flow-step:hover{transform:translateY(-2px);box-shadow:0 16px 28px rgba(0,0,0,.09)}
-    .flow-step:nth-of-type(even){border-color:#CFE3F0}
+    .flow-step:nth-of-type(even){border-color:#CFE8F7}
     .step-n{
       width:58px;height:58px;border-radius:18px;display:grid;place-items:center;font-weight:900;font-size:1.2rem;color:#fff;
-      background:linear-gradient(135deg,var(--utb-green) 0%,var(--utb-blue) 100%);
+      background:linear-gradient(135deg,var(--utb-blue) 0%,var(--utb-cyan) 100%);
       box-shadow:0 8px 18px rgba(0,0,0,.14)
     }
     .step-content{display:grid;grid-template-columns:54px 1fr;gap:16px;align-items:center}
@@ -132,22 +136,22 @@
     .step-desc{margin:6px 0 0;color:var(--utb-gray);font-size:.97rem}
     .icon-round{
       width:54px;height:54px;border-radius:18px;background:linear-gradient(180deg,#F2FBF7,#ECF5FB);display:grid;place-items:center;
-      border:1px solid #D7E9E1
+      border:1px solid #DBE5F5
     }
     .flow-arrow{position:relative;z-index:1;width:52px;height:52px;margin:0 auto 14px;display:grid;place-items:center}
     .flow-arrow::before{
-      content:"";width:52px;height:52px;border-radius:999px;background:#fff;border:3px solid #D4E5DE;
+      content:"";width:52px;height:52px;border-radius:999px;background:#fff;border:3px solid #D5E2F6;
       position:absolute;box-shadow:0 8px 18px rgba(0,0,0,.08)
     }
     .flow-arrow svg{position:relative;z-index:1}
     .split-wrap{max-width:1040px;margin:0 auto 16px;position:relative;z-index:1;padding-top:18px}
-    .split-node{width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,var(--utb-green),var(--utb-blue));margin:0 auto;box-shadow:0 0 0 8px rgba(0,122,83,.12)}
+    .split-node{width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,var(--utb-cyan),var(--utb-cyan));margin:0 auto;box-shadow:0 0 0 8px rgba(18,63,216,.12)}
     .split-connector{position:relative;height:42px;margin:0 auto 8px;max-width:880px}
     .split-connector::before{
-      content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:4px;height:18px;background:var(--utb-green);border-radius:999px
+      content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:4px;height:18px;background:var(--utb-cyan);border-radius:999px
     }
     .split-connector::after{
-      content:"";position:absolute;left:18%;right:18%;top:18px;height:4px;background:linear-gradient(90deg,var(--utb-green),var(--utb-blue));border-radius:999px
+      content:"";position:absolute;left:18%;right:18%;top:18px;height:4px;background:linear-gradient(90deg,var(--utb-cyan),var(--utb-cyan));border-radius:999px
     }
     .branches{display:grid;grid-template-columns:1fr 1fr;gap:18px}
     .branch-card{
@@ -173,33 +177,33 @@
     .branch-desc{margin:12px 0 0;color:var(--utb-ink);font-size:1rem}
     .rejoin{position:relative;max-width:880px;height:56px;margin:8px auto 2px;z-index:1}
     .rejoin::before{
-      content:"";position:absolute;left:18%;right:18%;top:0;height:4px;background:linear-gradient(90deg,var(--utb-green),var(--utb-blue));border-radius:999px
+      content:"";position:absolute;left:18%;right:18%;top:0;height:4px;background:linear-gradient(90deg,var(--utb-cyan),var(--utb-cyan));border-radius:999px
     }
     .rejoin::after{
-      content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:4px;height:56px;background:var(--utb-blue);border-radius:999px
+      content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:4px;height:56px;background:var(--utb-cyan);border-radius:999px
     }
-    .rejoin-node{position:absolute;left:50%;top:-8px;transform:translateX(-50%);width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,var(--utb-green),var(--utb-blue));box-shadow:0 0 0 8px rgba(29,111,165,.10)}
+    .rejoin-node{position:absolute;left:50%;top:-8px;transform:translateX(-50%);width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,var(--utb-cyan),var(--utb-cyan));box-shadow:0 0 0 8px rgba(39,167,231,.10)}
 
     .tools-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
     .tool-card{background:#fff;border:1px solid var(--utb-border);border-radius:20px;padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
     .tool-head{display:flex;align-items:center;gap:12px}
     .tool-icon{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(180deg,#F2FBF7,#EDF6FC);border:1px solid #DAEAE2}
     .tool-card h3{margin:0}.tool-card p{margin:0;color:var(--utb-gray)}
-    .tool-link{margin-top:auto;display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:800;color:var(--utb-green-dark)}
+    .tool-link{margin-top:auto;display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:800;color:var(--utb-blue-dark)}
 
     .split-two{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}
     .tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 12px}
     .tab-btn{
       border:none;border-radius:999px;padding:11px 15px;font-weight:800;cursor:pointer;
-      background:#EAF4EF;color:var(--utb-green-dark);border:1px solid var(--utb-border)
+      background:#EAF4EF;color:var(--utb-blue-dark);border:1px solid var(--utb-border)
     }
-    .tab-btn[aria-selected="true"]{background:linear-gradient(135deg,var(--utb-green-dark),var(--utb-green));color:#fff}
+    .tab-btn[aria-selected="true"]{background:linear-gradient(135deg,var(--utb-blue-dark),var(--utb-cyan));color:#fff}
     .tab-panel{display:none}
     .tab-panel.active{display:block}
 
     details.accordion{border-top:1px solid #E3ECE7;padding:12px 0}
     details.accordion:first-of-type{border-top:none}
-    summary{cursor:pointer;list-style:none;font-weight:800;color:var(--utb-green-dark);display:flex;align-items:center;gap:10px}
+    summary{cursor:pointer;list-style:none;font-weight:800;color:var(--utb-blue-dark);display:flex;align-items:center;gap:10px}
     summary::-webkit-details-marker{display:none}
     .sum-icon{width:30px;height:30px;border-radius:10px;background:#EEF7F2;display:grid;place-items:center;flex:0 0 auto}
     details.accordion p{margin:10px 0 0;color:var(--utb-gray)}
@@ -268,13 +272,13 @@
   <div class="topbar">
     <div class="wrap">
       <div class="brand-mini">
-        <div class="brand-badge">UTB</div>
+        <div class="brand-badge"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr2n472h7dareQXnH-QTQGHZzmgZZy5botpzbS_XTCwg&s=10" alt="Logo UTB" referrerpolicy="no-referrer"><span class="logo-fallback" aria-hidden="true">UTB</span></div>
         <div>
           <div>Universidad Tecnológica de Bolívar</div>
           <div style="font-weight:500;opacity:.86">Curso · Inteligencia Artificial para la Educación</div>
         </div>
       </div>
-      <div class="course-chip">SAVIO · Infografía interactiva lista para GitHub Pages</div>
+      <a class="course-chip" href="../" aria-label="Volver a la colección Infografías UTB">← Volver a Infografías UTB</a>
     </div>
   </div>
 
@@ -282,9 +286,7 @@
     <div class="wrap">
       <div class="hero-shell">
         <div class="hero-grid">
-          <div class="hero-icon" aria-hidden="true">
-            <svg width="54" height="54" viewBox="0 0 24 24" style="color:white"><use href="#i-book"></use></svg>
-          </div>
+          <div class="hero-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr2n472h7dareQXnH-QTQGHZzmgZZy5botpzbS_XTCwg&s=10" alt="Logo UTB" referrerpolicy="no-referrer"><span class="logo-fallback" aria-hidden="true">UTB</span></div>
           <div>
             <h1>Transformación educativa con IA<br>para acceso a materiales</h1>
             <p>Una misma fuente puede convertirse en varias rutas de acceso. La propuesta usa aprendizaje profundo para adaptar materiales, sostener la revisión docente y responder tanto a contextos rurales como urbanos.</p>
@@ -355,7 +357,7 @@
               </div>
             </div>
           </div>
-          <div class="flow-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--utb-green)"><use href="#i-arrow"></use></svg></div>
+          <div class="flow-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--utb-cyan)"><use href="#i-arrow"></use></svg></div>
 
           <div class="flow-step" role="listitem">
             <div class="step-n">2</div>
@@ -367,7 +369,7 @@
               </div>
             </div>
           </div>
-          <div class="flow-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--utb-green)"><use href="#i-arrow"></use></svg></div>
+          <div class="flow-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--utb-cyan)"><use href="#i-arrow"></use></svg></div>
 
           <div class="flow-step" role="listitem">
             <div class="step-n">3</div>
@@ -379,7 +381,7 @@
               </div>
             </div>
           </div>
-          <div class="flow-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--utb-green)"><use href="#i-arrow"></use></svg></div>
+          <div class="flow-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--utb-cyan)"><use href="#i-arrow"></use></svg></div>
 
           <div class="flow-step" role="listitem">
             <div class="step-n">4</div>
@@ -391,7 +393,7 @@
               </div>
             </div>
           </div>
-          <div class="flow-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--utb-green)"><use href="#i-arrow"></use></svg></div>
+          <div class="flow-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--utb-cyan)"><use href="#i-arrow"></use></svg></div>
 
           <div class="flow-step" role="listitem">
             <div class="step-n">5</div>
@@ -403,7 +405,7 @@
               </div>
             </div>
           </div>
-          <div class="flow-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--utb-green)"><use href="#i-arrow"></use></svg></div>
+          <div class="flow-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--utb-cyan)"><use href="#i-arrow"></use></svg></div>
 
           <div class="flow-step" role="listitem">
             <div class="step-n">6</div>
@@ -475,7 +477,7 @@
           </div>
 
           <div class="rejoin" aria-hidden="true"><div class="rejoin-node"></div></div>
-          <div class="flow-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--utb-blue)"><use href="#i-arrow"></use></svg></div>
+          <div class="flow-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--utb-cyan)"><use href="#i-arrow"></use></svg></div>
 
           <div class="flow-step" role="listitem">
             <div class="step-n">8</div>
@@ -487,7 +489,7 @@
               </div>
             </div>
           </div>
-          <div class="flow-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--utb-blue)"><use href="#i-arrow"></use></svg></div>
+          <div class="flow-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--utb-cyan)"><use href="#i-arrow"></use></svg></div>
 
           <div class="flow-step" role="listitem">
             <div class="step-n">9</div>
@@ -628,6 +630,7 @@
   </main>
 
   <script>
+    document.querySelectorAll('img[alt="Logo UTB"]').forEach(img=>{img.addEventListener('error',()=>{img.style.display='none'; const f=img.nextElementSibling; if(f) f.style.display='block';});});
     (function(){
       const tabs = document.querySelectorAll('.tab-btn');
       const panels = document.querySelectorAll('.tab-panel');
